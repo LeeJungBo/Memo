@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Seller Mapper에다가 2개의 기능을 넣어야한다 (Insert와 select기능 -->
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.marondal.memo.user.repository.UserRepository">
+    
+    <insert id="insertUser" parameterType="map">
+        INSERT INTO
+            `user`
+            (
+                `loginId`
+                , `password`
+                , `name`
+                , `email`
+            )
+        VALUE
+            (
+                #{loginId}
+                , #{password}
+                , #{name}
+                , #{email}
+            )     
+            
+    </insert>
+    
+</mapper>

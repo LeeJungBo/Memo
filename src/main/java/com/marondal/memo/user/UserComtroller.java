@@ -17,4 +17,5 @@ public class UserComtroller {
 	public String inputLogin() {
 		return "user/login";
 	}
+	
 }

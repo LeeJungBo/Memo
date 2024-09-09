@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="ko" 
+    xmlns:th="http://www.thymeleaf.org" 
+        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        layout:decorate="~{layouts/default}">
+        
+        
+        <section layout:fragment="contents" class="contents d-flex justify-content-center">
+            <div class="memoInput-box bg-info">
+                <h2>메모 입력</h2>
+                <input type="text" placeholder="제목을 입력하세요" class="form-control">
+                <textarea placeholder="내용을 입력하세요" class="form-control"></textarea>
+            </div>
+        </section>
+
+</html>
