@@ -8,6 +8,8 @@
             <div class="input-box my-4 p-5 rounded-lg">
                 <h2 class="text-center">회원가입</h2>
                 <input type="text" placeholder="아이디" class="form-control mt-4" id="idInput">
+                <!-- <div class="small text-success d-none" id="availableText">사용 가능한 ID입니다.</div> -->
+                <!-- <div class="small text-danger d-none id="duplicateText">중복된 ID입니다..</div> -->
                 <input type="password" placeholder="비밀번호" class="form-control mt-2" id="password">
                 <input type="password" placeholder="비밀번호 확인" class="form-control mt-2" id="passwordConfirmInput">
                 <input type="text" placeholder="이름" class="form-control mt-2" id="nameinput">
@@ -16,8 +18,41 @@
             </div>
         </section>
         
+        
+        
         <script layout:fragment="script">
             $(document).ready(function(){
+            	
+      /*      	$("#duplicateBtn").on("click", fuction(){
+            		
+            		let id = $("#idInput").val();
+            		
+            		if(id == ""){
+                        alert("아이디를 입력하세요");
+                        return;
+                    }
+            		
+            		$.ajax({
+                        type:"get"
+                        , url:"/user/duplicate-id"
+                        , data:{"loginId":id}
+                        , success:function(data){
+                            if(data.isDuplicate == true){
+                               $("#duplicateText").removeClass("d-none");
+                               $("#availableText").addClass("d-none");
+                            }else{
+                            	$("#availableText").removeClass("d-none");
+                            	$("#duplicateText").addClass("d-none");
+                            }
+                        }
+                        , error:function(){
+                            alert("중복 확인 에러!");
+                        }
+                    });
+            		
+            		다음 과제 "중복이라고 떠도 회원가입이 됨 이것을 막는 방법을 알아볼것"
+            		
+            	});      */
             	
             	$("#joinBtn").on("click", function(){
             		
