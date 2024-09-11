@@ -14,9 +14,11 @@ public class FileManager {
 	// static을 붙임으로써 객체 생성 없이 쓸수 있는 멤버 변수가 됨
 	// 실제 파일을 사용자가 사이트에 올렸을때 실제 파일을 전달하고 그 경로또한 전달하는 과정에서 주는거다
 	// 이렇게 static 붙여줘야 밑에 static메소드에서 쓸수 있음 없으면 에러뜸
+	// 원래 상수나 변수는 private로 대부분 하지만 이번에는 예외적으로  WebMvcConfig 여기 클래스에서 써주기 위한 상수여서 public씀
 	public static final String FILE_UPLOAD_PATH = "C:\\Users\\이중보\\Desktop\\코딩\\springProject\\upload\\memo";
 	
 	// 이건 규칙만 만든건지 우리가 설정해놓는게 아님 설정은 완전히 추가로 필요함 WebMvcConfig 클래스 에서 해야함 (그냥 스프링스 프로젝트에서 쓰라고 해놓음)
+	// 객체 새성없이 쓸수 있는거 static( ex. FileManager.saveFile(파라미터)  )
 	// 파일 저장
 	public static String saveFile(int userId, MultipartFile file) {
 		
