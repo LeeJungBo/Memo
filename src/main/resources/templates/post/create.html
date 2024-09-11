@@ -10,7 +10,7 @@
                 <h1 class="text-center">메모 입력</h1>
                 <input type="text" placeholder="제목을 입력하세요" class="form-control mt-4" id="titleInput">
                 <textarea placeholder="내용을 입력하세요" class="form-control mt-2" rows="10" id="contentsInput"></textarea>
-                <input type="file" class="mt-2">
+                <input type="file" class="mt-2" id="fileInput">
                 <div class="d-flex justify-content-between mt-3">
                     <a href="/post/list-view" class="btn btn-secondary">목록으로</a>
                     <button type="button" class="btn btn-secondary" id="saveBtn">저장</button>
@@ -28,6 +28,8 @@
             		let title = $("#titleInput").val();
             		let contents = $("#contentsInput").val();
             		
+            		let file = $("#fileInput")[0].files[0]; // file은 val속성으로 단순하게 못함 이건 이런 사용법을 쓰고 0인덱스에서 파일 안에서 여러개의 파일을 선택가능하기에 
+            		
             		if(title == ""){
             			alert("제목을 입력하세요");
             			return;
@@ -38,11 +40,19 @@
                         return;
                     }
             		
+            		let formData = new FormData();
+            		formData.append("title", title);
+            		formData.append("contents", contents);
+            		formData.append("imageFile", file); // 엑셀 기획서에서 정해진 이름으로 활용 formData는 메소드를 통해서 객체를 저장해주고 이형태로 전달
+            		
             		$.ajax({
             			type:"post"
             			, url:"/post/create"
-            			, data:{"title":title, "contents":contents}
-            		    , success:function(data){
+            			, data:formData   // 엑셀 기획서에서 정해진 이름으로 활용 formData는 메소드를 통해서 객체를 저장해주고 이형태로 전달
+            		    , enctype:"multipart/form-data" // 파일 업로드시 필수
+            		    , processData:false // 파일 업로드시 필수
+            		    , contentType:false // 파일 업로드시 필수
+            			, success:function(data){
             		    	if(data.result == "success"){
             		    		location.href = "/post/list-view"
             		    	}else{
