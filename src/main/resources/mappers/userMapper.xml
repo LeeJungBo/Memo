@@ -38,7 +38,7 @@
     
     <select id="selectUser" parameterType="map" resultType="com.marondal.memo.user.domain.User">
         SELECT
-                `id``
+                `id`
                 ,`loginId`
                 , `password`
                 , `name`

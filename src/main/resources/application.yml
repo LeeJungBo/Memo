@@ -13,6 +13,9 @@ spring:
   jpa:
     hibernate:
       ddl-auto: none
+      naming:
+        implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
   config:
     import: security-variable.yml
   application:

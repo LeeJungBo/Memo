@@ -10,9 +10,7 @@ header{
 	background-color:#cccccc;
 }
 
-.contents{
-	height:500px;
-}
+
 
 .contents > .input-box{
 	width:400px;
@@ -20,7 +18,7 @@ header{
 }
 
 .contents > .memoInput-box{
-	width:500px;
+	width:800px;
 }
 
 footer{

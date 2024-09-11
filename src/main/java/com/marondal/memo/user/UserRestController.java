@@ -62,13 +62,13 @@ public class UserRestController {
 			resultMap.put("result", "success");
 			
 			// 로그인에 성공하면 session에 로그인성공 기록을 기록해줘야한다.
-			// HttpServletRequest 객체로부터 얻어온다.
+			// HttpServletRequest 객체로부터 얻어온다.	
 			// 특정 클라이언트에서 사용될 session을 의미
 			// 클라이언트의 session과 매칭되는건 그냥 내부에서 알아서 매칭
 			HttpSession session = request.getSession();
 			// key, value 형태의 데이터 관리
 			// 로그인이 되었다는 정보를 저장
-			// 어떤 페이지에서든 해당 정보를 사용할 수있다.
+			// 어떤 페이지에서든 해당 정보를 사용할 수있다.(한번 로그인하면 로그아웃 하기전까지 계속 로그인 된 상태여야 하기때문이다)
 			// 로그인된 사용자 정보를 저장해서 사용자 정보 기반의 페이지를 구성할 수 있다.(저 객체를 통해서 저장해놓고 어디서든 사용할수있다.)
 			session.setAttribute("userId", user.getId()); // user.getId() 자바이니 자바문법 get으로 갖고오기
 			session.setAttribute("userName", user.getName()); // 자주 사용되는 유저의 이름 또한 저장해놓는다. 

@@ -33,7 +33,7 @@
             		 
             		 $.ajax({
             			 type:"post"
-            			 , url:"/user/join"
+            			 , url:"/user/login"
             			 , data:{"loginId":loginId, "password":password}
             		     , success:function(data){
             		    	 if(data.result == "success"){
