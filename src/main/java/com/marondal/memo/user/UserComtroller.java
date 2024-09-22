@@ -25,6 +25,7 @@ public class UserComtroller {
 	public String logout(HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		
+		
 		session.removeAttribute("userId");
 		session.removeAttribute("userName"); // session객체에 있는 userId,userName 지유기
 		
