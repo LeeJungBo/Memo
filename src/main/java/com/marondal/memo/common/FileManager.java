@@ -73,4 +73,41 @@ public class FileManager {
 		// "2_8120980" 이게 폴더를 의함 즉,"directoryName"이게 폴더이름을 얘기하는거고 거기에 /를 붙여야 구분이 가므로
 	}
 	
+	
+	
+	// 파일도 실제로 삭제해줘야하니 여기다가 메소드 만들기
+	// static을 붙인 이유는 객체 생성없이 메소드 호출하기 위해
+	public static boolean removeFile(String filePath) { // /images/2_8120980/test.png (images는 반드시 붙일 필요없지만 그냥 규칙을 만들어내고자 붙인거)
+		// filePath 얘가 null이어도 수행되도록 해야한다.	
+		if(filePath == null) {
+			return false; // null이라면 중단되게 한다. 어차피 파일이 없으면 이 기능은 중단되고 다른 삭제기능만 작동되게끔
+		}
+		
+		String fullFilePath = FILE_UPLOAD_PATH + filePath.replace("/images", ""); //문자열로 경로를 지정 (즉 실제 저장되어있는 파일 경로를 얘한테 맥여준거)
+		
+		Path path = Paths.get(fullFilePath); //Path라는 객체로 경로를 지정(경로를 다루는 객체여서 경로를 다루는 메소드들이 많이존재)
+		
+		Path directoryPath = path.getParent(); // 즉, 폴더를 삭제하기 위한거 (// C:\\Users\\이중보\\Desktop\\코딩\\springProject\\upload\\memo)
+		// C:\\Users\\이중보\\Desktop\\코딩\\springProject\\upload\\memo/2_8120980/test.png
+				// 폴더(디텍토리) 제거(파일이름만 쏙뺀 경로
+				 // 이 객체를 통해 상위경로를 얻어낼수있음 상위경로만 갖고와야됨
+		
+		
+		// 파일이 존재하는지 확인
+		if(Files.exists(path) && Files.exists(directoryPath)) { // Files라는 객체에 path란 객체가 있냐 있다면 해라 (폴더와 실제 파일을 둘다 지우는것밖에 안됨 폴더만 지우는것도 안되고 파일만 지우는것도 안된다.)
+			try {
+				Files.delete(path);
+				Files.delete(directoryPath);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				return false;
+			}
+			return true;
+		}else {
+			return false;
+		}
+		
+	
+	}
+	
 }
